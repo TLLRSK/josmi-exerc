@@ -15,27 +15,11 @@
 			border-left: 1px solid #eee;
 		}
 
-		.cart-row {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 12px 24px;
-		}
-
-		.cart-row__info {
-			display: flex;
-			align-items: center;
-		}
-
-		.cart-row__info__units {
+		.cart-row--info--units {
 			margin-right: 3px;
 		}
 
-		.cart-row strong {
-			font-size: 1.2em;
-		}
-
-		.cart-row img {
+		.cart--img {
 			margin-right: 12px;
 			max-width: 120px;
 		}
@@ -45,23 +29,37 @@
 			margin-bottom: 12px;
 		}
 
-		.delivery label {
+		.delivery--label {
 			display: block;
 			margin-bottom: 3px;
 		}
 
-		.delivery input {
+		.delivery--input {
 			margin-right: 12px;
 		}
 
 		.total {
 			padding-top: 12px;
-			border-top: 1px solid #222;
+			border-top: 1px solid black;
 		}
 
-		.total strong {
+		.total--strong {
 			font-size: 1.5em;
 		}
+		
+		/* UTILITIES */
+		.flex--center {
+			display: flex;
+			align-items: center;
+		}
+		.strong {
+			font-size: 1.2em;
+		}
+		.justified {
+			justify-content: space-between;
+			padding: 12px 24px;
+		}
+
 
 	</style>
 </head>
@@ -72,40 +70,40 @@
 			<p>
 				Introduce el código zip para calcular los gastos de envío
 			</p>
-			<label for="zip-code">
+			<label for="js-zip-code" class="delivery--label">
 				Código zip
 			</label>
-			<input id="zip-code" type="text" placeholder="555333" />
-			<button id="calculate-delivery">
+			<input id="js-zip-code" class="delivery--input" type="text" placeholder="555333" />
+			<button id="js-calculate-delivery" class="delivery--button">
 				Calcular gastos de envío
 			</button>
 		</div>
 		<div class="cart">
-			<div class="cart-row">
-				<div class="cart-row__info">
-					<img src="./assets/chicle.jpg" alt="chicle de pera" />
-					<strong class="cart-row__info__units">
+			<div class="justified flex--center">
+				<div class="cart--info flex--center">
+					<img class="cart--img" src="./assets/chicle.jpg" alt="chicle de pera" />
+					<strong class="cart-row--info--units strong">
 						x1000
 					</strong>
 					unidades
 				</div>
-				<strong>
+				<strong class="strong">
 					5€
 				</strong>
 			</div>
-			<div class="cart-row">
-				<div class="cart-row__info">
+			<div class="justified flex--center">
+				<div class="flex--center">
 					Gastos de envío
 				</div>
-				<strong id="delivery-cost">
+				<strong class="strong" id="js-delivery-cost">
 					-
 				</strong>
 			</div>
-			<div class="cart-row total">
-				<div class="cart-row__info">
+			<div class="justified flex--center total">
+				<div class="flex--center">
 					Total
 				</div>
-				<strong id="total-price">
+				<strong class="total--strong" id="js-total-price">
 					-
 				</strong>
 			</div>
