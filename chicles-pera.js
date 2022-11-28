@@ -16,10 +16,10 @@ window.addEventListener('load', () => {
 
 	calculateDeliveryButton.addEventListener('click', () => {
 		const zipCode = document.getElementById('js-zip-code').value;
-		console.log(zipCode);
 
 		//CHECK FORMAT
-		if (zipCode.length != 5 || isNaN(zipCode%zipCode)) {
+		const regExp = /\d{5}/;
+		if (zipCode.length != 5 || !regExp.test(zipCode)) {
 			return showBadZipFormat();
 		}
 
@@ -27,20 +27,7 @@ window.addEventListener('load', () => {
 		let deliveryCost = 0;
 		let coin = '€'
 
-		// WITH ELSE IF
-		// if (zipCode[0] == 1 && zipCode[1] == 0) {
-		// 	deliveryCost = 0;
-		// } else if (zipCode[0] >= 1 && zipCode[0] <= 5) {
-		// 	deliveryCost = 2;
-		// } else if (zipCode[0] >= 6 && zipCode[0] <= 8) {
-		// 	deliveryCost = 3;
-		// } else if (zipCode[0] == 9) {
-		// 	deliveryCost = 5;
-		// }
-		// showDeliveryCost(deliveryCost + coin)
-
-		// WITH SWITCH()
-		switch(zipCode[0]) {
+		switch (parseInt(zipCode[0])) {
 			case 1:
 			case 2:
 			case 3:
@@ -56,8 +43,9 @@ window.addEventListener('load', () => {
 			case 9:
 				deliveryCost = 5;
 				break;
+			default:
+				break;
 		}
-		console.log(deliveryCost)
 		showDeliveryCost(deliveryCost + coin)
 
 		//RETURN TOTAL COST
